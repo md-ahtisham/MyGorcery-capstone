@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+<style>
+    #slide-btn{
+        margin-right:1em;
+        margin-left: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    #toggle-wrap{
+       
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+</style>
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Shop</h2>
+                    <h3 class="section-subheading text-muted">What we can offer you.</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="contaniner" style="margin-top:1em;margin-bottom:2em">
+                        <a href="/show_brand?brand=all" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >All products</a>
+                        <a href="/show_brand?brand=food" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Healthcare</a>
+                        <a href="/show_brand?brand=fruits" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >herbal products</a>
+                        <a href="/show_brand?brand=vegetable" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Multivitamins</a>
+                        <a href="/show_brand?brand=health" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Health</a>
+                        <a href="/show_brand?brand=beauty" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Personal Care</a>
+                      
+
+                    </div>
+
+                    {% for todo in show %} 
+                   
+                    <div class="col-md-3" id="toggle-wrap">
+                     
+                            <a href="#"><img class="img-fluid" src="static\image\{{todo. pphoto }}" id="slide-img" alt="..." /></a>
+                            <!-- <p scope="row">{{loop.index}}</p> -->
+                            <p>{{todo. pname}}</p>
+                            <p>Rs.{{todo. pprice}}</p>
+                            {% if todo.pquantity>0 %}
+                            <a href="/add_to_cart/{{todo.pid}}" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Add to cart</a>
+                      
+                            {% else %}
+                                <a href="#" type="button" class="btn btn-primary btn-l text-uppercase" id="btn-red" >Out Of stock</a>
+                      
+                            {% endif %}
+                            
+
+                      
+                    </div>
+
+                    
+                {% endfor %}
+               
+                    
+                </div>
+        </section>
+
+{% endblock %}
+      

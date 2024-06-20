@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+    #slide-img{
+        height: 10%;
+        width: 90px;
+    }
+    #slide-btn{
+        margin-top: 5%;
+    }
+    #side-nav{
+      margin-top: 2em;
+    }
+   h5{
+    text-align: center;
+   }
+   .row{
+     margin-top: 3em;
+   }
+  .page-section{
+    width:70%;
+    margin-left:15%;
+    margin-right:15%;
+    
+    margin-top:8em;
+  }
+</style>
+  <section class="page-section" id="customer_details">
+    <div class="container">
+        
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Cart Details</h2>
+            
+        </div>
+        <div class="row text-center">
+            {% if flag==0 %}
+            <p> Cart is empty</p>
+            {% else %}
+   {% for cart in cart %} 
+   
+    
+<table class="table ">
+    <tr>
+        
+        {% for product in product %} 
+       {% if product.pid==cart.prod_index %}
+        <tr><td rowspan="3"><img class="img-fluid" src="static\image\{{product.pphoto }}" id="slide-img" alt="..." /></td></tr>
+        {% endif %}
+          {% endfor %}
+          <td>{{cart.cid }}</td>
+
+           <td>{{cart.prod_name}}</td>
+           <td>Rs.{{cart. prod_price}}</td>
+    <td>{{cart.prod_quan}}</td>
+    <td> <a href="/del_cart/{{cart.prod_index}}" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Delete</a></td>
+   
+  </tr>
+    
+     {% endfor %}
+    
+     {% endif %}
+    
+   
+</table>
+<a href="/checkout" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Checkout</a>
+        </div>
+    </div>
+</section>     
+{% endblock %}

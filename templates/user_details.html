@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+    #slide-img{
+        height: 90px;
+        width: 100px;
+    }
+    #slide-btn{
+        margin-top: 5%;
+    }
+    #side-nav{
+      margin-top: 2em;
+    }
+   h5{
+    text-align: center;
+   }
+   .row{
+     margin-top: 3em;
+   }
+  .page-section{
+    width:50%;
+    margin-left:25%;
+    margin-right:25%;
+    
+    margin-top:8em;
+  }
+</style>
+  <section class="page-section" id="customer_details">
+    {% if current_user.username=='deepika' %}
+    <div class="container">
+        
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">User Details</h2> 
+        </div>
+        <div class="row text-center">
+            <table class="table table-striped">
+            <tr style="text-align:center;margin-top:10em;">
+               <td>ID</td>
+                <td>Name</td>
+                 <td>Email</td>
+                 <td></td>
+   
+            </tr>
+            
+            {% for user in user %} 
+            <tr style="text-align:center;margin-top:10em;">
+                <td>{{user. id}}</td>
+                <td>{{user. username}}</td>
+                <td>{{user. email}}</td>
+                <td> <a href="/del_user/{{user.id}}" type="button" class="btn btn-primary btn-l text-uppercase" id="btn"><img src="static\image\dustbin.png"  alt="..." /></a></td>
+  
+            </tr>
+            {% endfor %}
+        
+        </table>    
+        </div>
+    </div>
+    {% endif %}
+</section>     
+{% endblock %}

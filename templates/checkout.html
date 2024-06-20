@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+<style>
+
+    #slide-img{
+        height: 90px;
+        width: 100px;
+    }
+    #slide-btn{
+        margin-top: 2em;
+    }
+   
+</style>
+
+
+    <div class="container-fluid" style="margin-top: 10em;">
+      <div class="row">
+        <div class="col-sm-8">
+          
+      {% for cart in cart %}
+            {% if cart.cmail==current_user.email %}
+              {% for prod in prod%}
+              {% if cart.prod_index==prod.pid %}
+              <table class="table " style="text-align: center;">
+              <tr><td rowspan="3"><a href="#"><img class="img-fluid" src="static\image\{{prod.pphoto }}" id="slide-img" alt="..." /></a></td></tr>
+              <tr><td >{{cart.prod_name}}</td>
+                <td>{{cart.prod_quan}} pieces</td>
+                <td>{{cart.prod_price}}</td>
+                <td>{{cart.total}}</td>
+                
+              </tr>
+             
+            </table>
+         
+            {% endif %}
+              
+              {% endfor %}
+              
+            {% endif %}
+            <p style="text-align: center;margin-right: 3%;"> Total amount you need to pay is Rs.<b>{{sum}}</b><br>
+            {% endfor %}
+            
+
+            
+      <p style="font-size:10px;margin-top:5em;">The price and availability of items are subject to change. The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price.
+
+        Do you have a promotional code? We'll ask you to enter your claim code when it's time to pay.</p>
+        </div>
+        <div class="col-sm-4" style="margin-top:10%;margin-bottom:10%">
+            <p style="text-align: center;margin-right: 3%;"> Total amount you need to pay is Rs.<b>{{sum}}</b><br>
+            <a href="/confirm" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Confirm order</a></p>
+
+         </div>
+         </div>                    
+
+    </div>
+  
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+    #slide-img{
+        height: 90px;
+        width: 100px;
+    }
+    #slide-btn{
+        margin-top: 5%;
+    }
+    #side-nav{
+      margin-top: 2em;
+    }
+   h5{
+    text-align: center;
+   }
+   .row{
+     margin-top: 3em;
+   }
+  
+</style>
+<div class="container" style="margin-top: 7.2em;">
+  <div class="text-center">
+      
+      <h2 class="section-heading text-uppercase">Account Details</h2>
+      <h3 class="section-subheading text-muted"></h3>
+  </div>
+  <div class="row" >
+    <div class="col-sm-4">
+      <a href="/profile">
+      <img class="rounded mx-auto d-block" src="../static/image/user.png" alt="..." /></a>
+      <h5 style="margin-top: 1em;text-align: center;">Your details </h5>
+    </div>
+    <div class="col-sm-4">
+      <a href="/order">
+        <img class="rounded mx-auto d-block" src="../static/image/clipboard.png" alt="..." /></a>
+      <h5 style="margin-top: 1em;">Order details</h5>
+    </div>
+    <div class="col-sm-4">
+      <a href="#">
+        <img class="rounded mx-auto d-block" src="../static/image/clipboard (1).png" alt="..." /></a>
+      <h5 style="margin-top: 1em;">Past orders </h5>
+    </div>
+        
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <a href="#">
+          <img class="rounded mx-auto d-block" src="../static/image/address.png" alt="..." /></a>
+        <h5 style="margin-top: 1em;">Addresses </h5>
+      </div>
+      <div class="col-sm-4">
+        <a href="/view_cart">
+          <img class="rounded mx-auto d-block" src="../static/image/shopping-cart.png" alt="..." /></a>
+        <h5 style="margin-top: 1em;">Your Cart </h5>
+      </div>
+      <div class="col-sm-4">
+        <a href="#">
+          <img class="rounded mx-auto d-block" src="../static/image/wishlist.png" alt="..." /></a>
+        <h5 style="margin-top: 1em;">Best Offers</h5>
+      </div>
+          
+      </div>
+      <div class="row" >
+        <div class="col-sm-4">
+          <a href="/addproduct">
+          <img class="rounded mx-auto d-block" src="../static/image/user.png" alt="..." /></a>
+          <h5 style="margin-top: 1em;text-align: center;">add to product </h5>
+        </div>
+      
+       
+            
+        </div>
+  
+  </div>
+   
+{% endblock %}

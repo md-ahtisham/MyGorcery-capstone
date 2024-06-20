@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+    #slide-img{
+        height: 90px;
+        width: 100px;
+    }
+    #slide-btn{
+        margin-top: 5%;
+    }
+    #side-nav{
+      margin-top: 2em;
+    }
+   h5{
+    text-align: center;
+   }
+   .row{
+     margin-top: 3em;
+   }
+  .page-section{
+    width:50%;
+    margin-left:25%;
+    margin-right:25%;
+    
+    margin-top:8em;
+  }
+</style>
+  <section class="page-section" id="customer_details">
+    <div class="container">
+        
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">All Orders</h2>
+            
+        </div>
+        <div class="row text-center">
+
+    {% if flag==0 %}
+    
+        {% for order in order %} 
+    <table class="table table-striped">
+        <tr>
+            {% for product in product %} 
+            {% if order.prod_index==product.pid %}
+            <tr><td rowspan="3"><a href="#"><img class="img-fluid" src="static\image\{{product.pphoto }}" id="slide-img" alt="..." /></a></td></tr>
+               {% endif %} 
+               {% endfor %}
+               <td>{{order. oid}}</td>
+               <td>{{order. prod_name}}</td>
+               <td>Rs.{{order. prod_price}}</td>
+               <td>{{order.prod_quan}}</td>
+        <td>{{order. date}}</td>
+        </tr>
+        
+   </table>
+
+    {% endfor %}
+    {% else %}
+    {% for order in order %} 
+    {% for cart in cart %} 
+   
+    {% if order.oid != cart.oid %}
+<table class="table table-striped">
+    <tr>
+        {% for product in product %} 
+        {% if order.prod_index==product.pid %}
+        <tr><td rowspan="3"><a href="#"><img class="img-fluid" src="static\image\{{product.pphoto }}" id="slide-img" alt="..." /></a></td></tr>
+           {% endif %} 
+           {% endfor %}
+           <td>{{order. oid}}</td><td>{{order. prod_name}}</td>
+           <td>Rs.{{order. prod_price}}</td>
+    <td>{{order. date}}</td>
+    </tr>
+    {% endif %}
+    
+     {% endfor %}
+</table>
+
+{% endfor %}
+
+    {% endif %}
+        
+       
+            
+        </div>
+    </div>
+</section>     
+{% endblock %}

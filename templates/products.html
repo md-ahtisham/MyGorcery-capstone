@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+
+{% block content %}
+<style>
+  #product_details{
+    padding-top: 10em;
+    background-color:#f5f5f4;
+  }
+  .form-control{
+    margin-bottom: 2em;
+  }
+  #slide-img{
+    width:32px;
+    height:32px;
+  }
+  #btn:hover{
+    background-color: black;
+  }
+  #slide-btn{
+    margin-bottom: 2em;
+  }
+
+  #prod{
+    background-color: white;
+    margin-left:10%;
+    margin-right: 10%;
+  }
+  .h-id{
+    text-transform: capitalize;
+    margin-top:2em;
+  }
+  .table{
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
+  }
+</style>
+<section class="page-section" id="product_details">
+    <div class="container">
+      
+    <div class="row text-center">
+    <div class="col-sm-10" id="prod">
+        <table class="table table-striped">
+  
+            <h2 class="h-id">Product list</h2>
+            <tr>
+              <th> </th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Quanity</th>
+              <th> </th>
+            </tr>
+            {% for product in product %} 
+        <tr> 
+
+        <td ><img class="img-fluid" src="static\image\{{product.pphoto }}" id="slide-img" alt="..." /></td>
+           <td>{{product.pname}}</td>
+           <td>Rs.{{product.pprice}}</td>
+           <td>{{product.pcategory}}</td>
+        <td>{{product.pquantity}}</td>
+       
+        <td> <a href="/del_prod/{{product.pid}}" type="button" class="btn btn-primary btn-l text-uppercase" id="btn"><img src="static\image\dustbin.png"  alt="..." /></a></td>
+  
+
+    
+   
+    </tr>    {% endfor %}
+    <tr><td colspan="5"> <a href="/addproduct" type="button" class="btn btn-primary btn-l text-uppercase" id="slide-btn" >Add products</a></td></tr>
+      
+</table></div>
+
+        </div>
+        
+    </div>
+</section>  
+{% endblock %}

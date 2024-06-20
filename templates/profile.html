@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+    #slide-img{
+        height: 90px;
+        width: 100px;
+    }
+    #slide-btn{
+        margin-top: 5%;
+    }
+    #side-nav{
+      margin-top: 2em;
+    }
+   h5{
+    text-align: center;
+   }
+   .row{
+     margin-top: 3em;
+   }
+  .page-section{
+    width:50%;
+    margin-left:25%;
+    margin-right:25%;
+    
+    margin-top:8em;
+  }
+</style>
+  <section class="page-section" id="customer_details">
+    <div class="container">
+        
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Your Details</h2>
+            
+        </div>
+        <div class="row text-center">
+
+            {% for user in user %} 
+  
+        <table class="table table-striped">
+            <tr style="text-align:center;margin-top:10em;">
+                <td>Your ID:</td>
+                <td>{{user. id}}</td>
+            </tr>
+            <tr>
+                <td>Your Name:</td>
+                <td>{{user. username}}</td>
+            </tr>
+            <tr>
+                <td>Your Email:</td>
+                <td>{{user. email}}</td>
+            </tr>
+        </table>
+ 
+
+        {% endfor %}
+       
+            
+        </div>
+    </div>
+</section>     
+{% endblock %}

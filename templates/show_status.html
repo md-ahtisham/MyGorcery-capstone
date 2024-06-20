@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+    #slide-img{
+        height: 90px;
+        width: 100px;
+    }
+    #slide-btn{
+        margin-top: 5%;
+    }
+    #side-nav{
+      margin-top: 2em;
+    }
+   h5{
+    text-align: center;
+   }
+   .row{
+     margin-top: 3em;
+   }
+  .page-section{
+    width:70%;
+    margin-left:15%;
+    margin-right:15%;
+    
+    margin-top:8em;
+  }
+  #btn{
+    background-color: white;
+  }
+</style>
+  <section class="page-section" id="customer_details">
+    <div class="container">
+        
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Order Details</h2>
+            
+        </div>
+        <div class="row text-center">
+
+ 
+    <table class="table table-striped">
+        <tr>
+          <th> </th>
+            <th>Order Id</th>
+            <th>Product Name</th>
+            <th>Total Amount</th>
+            <th>Customer Id</th>
+            <th>Order Date</th>
+            
+        </tr>
+        {% for order in order %}
+        {% for product in product %}
+        <tr>{% for show in show %} 
+            {% if order.oid==show.oid %}   
+            {% if product.pid==order.prod_index %}
+            <td><img class="img-fluid" src="static\image\{{product.pphoto }}" id="slide-img" alt="..." /></td>
+       
+            <td>{{show. oid}}</td>
+            <td>{{product. pname}}</td>
+            <td>{{order. total}}</td>
+            <td>{{show. cid}}</td>
+            <td>{{order.date}}</td>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        {% endfor %}</tr>
+   </table>
+
+        </div>
+    </div>
+</section>     
+{% endblock %}

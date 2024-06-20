@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+    #slide-img{
+        height: 90px;
+        width: 100px;
+    }
+    #slide-btn{
+        margin-top: 5%;
+    }
+    #side-nav{
+      margin-top: 2em;
+    }
+   h5{
+    text-align: center;
+   }
+   .row{
+     margin-top: 3em;
+   }
+  .page-section{
+    width:70%;
+    margin-left:15%;
+    margin-right:15%;
+    
+    margin-top:8em;
+  }
+  #btn{
+    background-color: white;
+  }
+  #btn-dust{
+    background-color: red;
+  }
+</style>
+  <section class="page-section" id="customer_details">
+    <div class="container">
+        
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Order Details</h2>
+            
+        </div>
+        <div class="row text-center">
+
+    {% if cart!=NONE %}
+       
+    <table class="table table-striped">
+        <tr>
+            <th> </th>
+            <th>Order Id</th>
+            <th>Product Name</th>
+            <th>Total Amount</th>
+            <th>Customer Id</th>
+            <th>Order Date</th>
+            <th>Order status</th>
+            <th colspan="3">Update Status</th>
+        </tr>
+        {% for order in order %} 
+        <tr>
+            
+            {% for product in product %} 
+            {% if order.prod_index==product.pid %}
+            <tr><td rowspan="3"><a href="#"><img class="img-fluid" src="static\image\{{product.pphoto }}" id="slide-img" alt="..." /></a></td></tr>
+               {% endif %} 
+               {% endfor %}
+               <td>{{order. oid}}</td>
+               <td>{{order. prod_name}}</td>
+               <td>Rs.{{order. over_all}}</td>
+               <td>{{order.cid}}</td>
+               <td>{{ order.date}}</td>
+               {% for status in status %}
+               {% if order. oid == status.oid %}
+               <td>{{status.status}}</td>
+               <td> <a href="/update_statusp/{{status.oid}}" type="button" class="btn btn-primary btn-l text-uppercase" id="btn"><img src="static\image\close.png"  alt="..." /></a></td>
+               <td> <a href="/update_statusd/{{status.oid}}" type="button" class="btn btn-primary btn-l text-uppercase" id="btn"><img src="static\image\fast-delivery.png"  alt="..." /></a></td>
+               <td> <a href="/update_statusr/{{status.oid}}" type="button" class="btn btn-primary btn-l text-uppercase" id="btn"><img src="static\image\delivery.png"  alt="..." /></a></td>
+               <td> <a href="/del_order/{{order.oid}}" type="button" class="btn btn-primary btn-l text-uppercase" id="btn-dust"><img src="static\image\dustbin.png"  alt="..." /></a></td>
+  
+               {% endif %}
+                {% endfor %}
+                
+
+        </tr>
+        {% endfor %}
+        
+   </table>
+
+
+    {% endif %}
+        
+       
+            
+        </div>
+    </div>
+</section>     
+{% endblock %}

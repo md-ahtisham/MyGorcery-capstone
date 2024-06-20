@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+
+{% block content %}
+<style>
+  #body{
+    padding-top: 10em;
+    background-color: white;
+  }
+  .form-control{
+    margin-bottom: 2em;
+  }
+</style>
+<div class="container" id="body" >
+
+    <form action="/add" method="POST">
+        
+          <input type="text" class="form-control" name="pname" id="pname" placeholder="Product title"> 
+          <input type="text" class="form-control" name="pquantity" id="pquantity" placeholder="Product quantity">
+          <input type="text" class="form-control" name="pprice" id="pprice" placeholder="Product price" > 
+          <input type="text" class="form-control" name="pcategory" id="pcategory" placeholder="Product Category"> 
+          <input type="text" class="form-control" name="psub" id="psub" placeholder="Product Sub-Category"> 
+          <input type="file" class="form-control" name="pphoto" placeholder="Product photo" > 
+          <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+
+</div> <!-- /container -->
+{% endblock %}

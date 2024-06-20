@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+<style>
+  #signup{
+    padding-top: 3em;
+    padding-right:2em;
+    width: 60%;
+    margin-right:20%;
+    margin-left:20%; 
+   background-color: white;
+  }
+  #form-id{
+    padding-left:1em;
+    padding-right:1em;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    margin-right:5%;
+    margin-left:5%;
+    border:1px solid white;
+    
+    color: black;
+    width: 90%;
+  }
+  #form-btn{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 100%;
+  }
+</style>
+<div class="container-fluid" style="background-image: url('../static/image/1.jpg'); padding-top: 8em;padding-bottom: 5em;">
+
+  <div class="container" id="signup">
+
+ 
+    <form class="form-signin" method="POST" action="/login" id="form-id">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Login</h2>
+        <h3 class="section-subheading text-muted">Please login to access.</h3>
+    </div>
+      {{ form.hidden_tag() }}
+      {{ wtf.form_field(form.username) }}
+      {{ wtf.form_field(form.password) }}
+      
+      <button class="btn btn-primary btn-l text-uppercase" id="form-btn" type="submit">Sign In</button>
+    </form>
+
+</div> <!-- /container -->
+</div>
+{% endblock %}
